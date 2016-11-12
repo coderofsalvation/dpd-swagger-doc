@@ -7,16 +7,25 @@ generate beautiful online swagger docs based on your deployd resources
     $ cd your-deployd-dir
     $ npm install dpd-event dpd-swagger-doc
 
-Bit of symlink magic:
+Then symlinks the swagger-html and copy the swagger-resource:
 
     $ cp -R node_modules/dpd-swagger-doc/resource resources/swagger
     $ cd public && ln -s ../node_modules/dpd-swagger-doc/node_modules/swagger-ui/dist apidoc && cd -
 
 > Done! Now edit `resource/swagger/get.js` to configure the generated docs, and surf to `http://localhost/apidoc/?url=/swagger#!/default` to see the generated docs 
 
-## Documenting Collection resources 
+## Features
 
-It's very simple, just put this in your config (`resources/foo/config.json` e.g.):
+* swagger json (should be) automatically generated at endpoint `/swagger`
+* automatic documentation for Collection resources 
+* automatic documentation for UserCollection resources 
+* Custom/Collection/UserCollection-resources can be hinted in config.json
+
+## Hinting documentation 
+
+Swagger will peek into your config.json for swagger snippets.
+This will allow you to extend the documentation for (User)Collections, and
+ define them from scratch for Custom resources:
 
     {
       "type": "Collection",                
@@ -35,52 +44,15 @@ It's very simple, just put this in your config (`resources/foo/config.json` e.g.
 
       }
       "swagger":{                                     <--
-        "pluralName": "items",                        <--
         "methods":{                                   <--
-          "get": {                                    <--
-            "public":true,                            <--
+          "get": {                                    <-- this is where the swagger extending 
+            "public":true,                            <-- starts.. 
             "description": "Creates a item",          <--
-            "produces": [ "application/json" ],       <--
-            "schema": {                               <--
-              "payload": {},                          <--
-              "query": { "type": "object" }           <--
-            }                                         <--
-          }                                           <--
+            "produces": [ "application/json" ]        <-- for more see swagger 2 specs or just
+          }                                           <-- peek here: http://petstore.swagger.io/v2/swagger.json
         }                                             <--
       }
     }
 
-## Documenting Custom resources 
-
-It's very simple, just put this in your config (`resources/foo/config.json` e.g.):
-
-    {
-      "type": "XXXXX", 
-      "swagger":{                                     <--
-        "pluralName": "items",                        <--
-        "methods":{                                   <--
-          "get": {                                    <--
-            "public":true,                            <--
-            "description": "Creates a item",          <--
-            "produces": [ "application/json" ],       <--
-            "schema": {                               <-- 
-              "payload": {},                          <-- payload jsonschema
-              "query": { "type": "object" }           <-- query arguments jsonschema
-            }                                         <--
-            "responses"{
-              "200":{
-                schema: { 
-                  "type":"object",                    <-- jsonschema of response 
-                  "properties":{
-                    "foo"{
-                      "type":"string", 
-                      "default":"bar"
-                    }
-                  }
-                }
-              }
-            }
-          }                                           
-        }                                             
-      }
-    }
+> NOTE: it is not need to specify get/post/put/delete sections, since they are automatically generated for 
+>	UserCollections & Collections. However, as shown above you can overload them (just peek at the `/swagger`-output in your browser) 
