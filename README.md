@@ -1,7 +1,5 @@
 generate beautiful online swagger docs based on your deployd resources
 
-![Build Status](https://travis-ci.org/username/reponame.svg?branch=master)
-
 <img src="screenshot.png"/>
 
 ## Usage
@@ -14,7 +12,7 @@ Bit of symlink magic:
     $ cp -R node_modules/dpd-swagger-doc/resource resources/swagger
     $ cd public && ln -s ../node_modules/dpd-swagger-doc/node_modules/swagger-ui/dist apidoc && cd -
 
-> Done! Now edit `resource/swagger/get.js` to configure the generated docs, and surf to `http://localhost/apidoc` to see the generated docs 
+> Done! Now edit `resource/swagger/get.js` to configure the generated docs, and surf to `http://localhost/apidoc/?url=/swagger#!/default` to see the generated docs 
 
 ## Documenting Collection resources 
 
