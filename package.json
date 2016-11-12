@@ -1,0 +1,18 @@
+{
+  "name": "dpd-swagger-doc",
+  "version": "1.0.0",
+  "description": "description here",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "json-schema-defaults": "^0.2.0",
+    "swagger-ui": "^2.2.6"
+  }
+}
