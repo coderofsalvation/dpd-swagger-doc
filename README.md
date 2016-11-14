@@ -59,5 +59,5 @@ For Custom resources however, you always need to  define them:
       }
     }
 
-> NOTE: it is not need to specify get/post/put/delete sections, since they are automatically generated for 
+> NOTE: it is not needed to specify get/post/put/delete sections, since they are automatically generated for 
 >	UserCollections & Collections. However, as shown above you can overload them (just peek at the `/swagger`-output in your browser) 
