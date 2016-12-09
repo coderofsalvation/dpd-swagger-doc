@@ -1,6 +1,9 @@
 module.exports = function(){
 
 	var me = this
+  var clone = function(d){
+    return JSON.parse( JSON.stringify(d) )
+  }
 
 	this.addGet = function(resourcename,method,swagger,endpoint,resourceConfig){
 		if( method == "get" ){
@@ -8,7 +11,7 @@ module.exports = function(){
 				endpoint.responses[200] = {
 					"schema":{
 						type: "object", 
-						properties: resourceConfig.properties
+						properties: clone(resourceConfig.properties)
 					}
 				}
 			}
@@ -33,7 +36,7 @@ module.exports = function(){
 							type: "array", 
 							items: [{
 									type:"object",
-									properties: resourceConfig.properties
+									properties: clone(resourceConfig.properties)
 							}]
 						}
 					}
@@ -57,7 +60,7 @@ module.exports = function(){
 						"required": true,
 						"schema": {
 							type: "object",
-							properties: resourceConfig.properties 
+							properties: clone(resourceConfig.properties)
 						}
 					}
 				]
@@ -86,7 +89,7 @@ module.exports = function(){
 						"required": true,
 						"schema": {
 							type: "object",
-							properties: resourceConfig.properties 
+							properties: clone(resourceConfig.properties)
 						}
 					}
 				]
@@ -110,7 +113,7 @@ module.exports = function(){
 						"required": true,
 						"schema": {
 							type: "object",
-							properties: resourceConfig.properties 
+							properties: clone(resourceConfig.properties)
 						}
 					}
 				]
