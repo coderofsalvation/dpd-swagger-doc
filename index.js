@@ -104,20 +104,6 @@ module.exports = function(){
 			if( !swagger.paths["/"+resourcename+"/{id}"] ) swagger.paths["/"+resourcename+"/{id}"] = {}
 			swagger.paths["/"+resourcename+"/{id}"][method] = endpoint
 			if( !endpoint.description ) endpoint.description = "deletes an "+resourcename+" item based on a given id"
-			if( !endpoint.parameters ){
-				endpoint.parameters = [
-					{
-						"in": "body",
-						"name": "body",
-						"description": resourcename+" object that needs to be added",
-						"required": true,
-						"schema": {
-							type: "object",
-							properties: clone(resourceConfig.properties)
-						}
-					}
-				]
-			}
 		}
 	}
 

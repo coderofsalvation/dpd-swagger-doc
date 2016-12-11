@@ -1,6 +1,6 @@
 {
   "name": "dpd-swagger-doc",
-  "version": "1.1.7",
+  "version": "1.1.8",
   "description": "automatically generated apidocs from deployd resources",
   "main": "index.js",
   "repository":"https://github.com/coderofsalvation/dpd-swagger-doc",
