@@ -1,6 +1,6 @@
 generate beautiful online swagger docs based on your deployd resources
 
-<img src="screenshot.png"/>
+<img src="https://github.com/coderofsalvation/dpd-swagger-doc/raw/master/screenshot.png"/>
 
 ## Features
 
