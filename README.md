@@ -20,7 +20,7 @@ Now copy the swagger-resource and symlink the swaggerfolder:
 
 > Done! now try: http://localhost:2403/apidoc/?url=/swagger#!/default
 
-## Usage: windows
+## Usage: windows/mac
 
 * npm install dpd-event dpd-swagger-doc dpd-event-extension
 * Copy : node_modules/dpd-swagger-doc/resource to resources/swagger
@@ -70,3 +70,17 @@ For Custom resources however, you always need to  define them:
 
 > NOTE: it is not needed to specify get/post/put/delete sections, since they are automatically generated for 
 >	UserCollections & Collections. However, as shown above you can overload them (just peek at the `/swagger`-output in your browser) 
+
+#### Troubleshooting  (MAC)
+
+```
+Error loading module node_modules/brace
+ReferenceError: window is not define
+```
+
+Perform these steps below, on the Mac when you get the above error:
+1.npm uninstall brace
+2.npm uninstall fbjs
+3.npm uninstall lodash-es
+
+> NOTE: It might throw some error on the console for certain functions and headers being missed. But it'll not be something to worry about.
