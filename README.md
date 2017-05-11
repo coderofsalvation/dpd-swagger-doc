@@ -8,17 +8,26 @@ generate beautiful online swagger docs based on your deployd resources
 * automatic documentation for UserCollection resources 
 * Custom/Collection/UserCollection-resources can be hinted in config.json
 
-## Usage
+## Usage: linux
 
     $ cd your-deployd-dir
-    $ npm install dpd-event dpd-swagger-doc
+    $ npm install dpd-event dpd-swagger-doc dpd-event-extension
 
 Now copy the swagger-resource and symlink the swaggerfolder:
 
     $ cp -R node_modules/dpd-swagger-doc/resource resources/swagger
-    $ cd public && ln -s ../node_modules/dpd-swagger-doc/node_modules/swagger-ui/dist apidoc && cd -
+    $ cp -R node_modules/dpd-swagger-doc/node_modules/swagger-ui/dist public/apidoc
 
-> Done! 
+> Done! now try: http://localhost:2403/apidoc/?url=/swagger#!/default
+
+## Usage: windows
+
+* npm install dpd-event dpd-swagger-doc dpd-event-extension
+* Copy : node_modules/dpd-swagger-doc/resource to resources/swagger
+* Create a folder in 'public' folder: 'apidoc'
+* Copy from: /node_modules/dpd-swagger-doc/node_modules/swagger-ui/dist to public/apidoc
+
+> Done! now try http://localhost:2403/apidoc/?url=/swagger#!/default
 
 ## Now what?
 
