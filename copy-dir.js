@@ -1,4 +1,4 @@
 var path = require('path'),
-        fs = require('fs');
-fs.mkdir('-p', 'resources/swagger-test');
-fs.cp('-Rf', path.join(__dirname, '/resource/*'), 'resources/swagger-test');
+        fs = require('fs-extra');
+//fs.mkdir('resources/swagger-test');
+fs.copy(path.join(__dirname, '/resource/*'), 'resources/swagger-test');
