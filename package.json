@@ -51,7 +51,8 @@
     "url": "https://github.com/coderofsalvation/dpd-swagger-doc/issues"
   },
   "dependencies": {
-    "swagger-ui": "^2.2.6"
+    "swagger-ui": "^2.2.6",
+    "fs-extra": "^3.0.0"
   },
   "description": "automatically generated apidocs from deployd resources",
   "devDependencies": {},

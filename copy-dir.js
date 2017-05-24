@@ -1,3 +1,5 @@
-var path = require('path');
-mkdir('-p', 'resources/swagger-test');
-cp('-Rf', path.join(__dirname, '/resource/*'), 'resources/swagger-test');
+var path = require('path'),
+        fs = require('fs-extra');
+console.log(__dirname);
+fs.mkdir('resources/swagger-test');
+fs.copy('-Rf', path.join(__dirname, '/resource/*'), 'resources/swagger-test');
