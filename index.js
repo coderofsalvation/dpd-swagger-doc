@@ -3,7 +3,12 @@ module.exports = function () {
     var me = this;
     var clone = function (d) {
         return JSON.parse(JSON.stringify(d));
-    };
+    },
+            getTag = function (resourcename) {
+                // Capitalize resourcename
+                return resourcename[0].toUpperCase() + resourcename.substr(1);
+            };
+
 
     this.addGet = function (resourcename, method, swagger, endpoint, resourceConfig) {
         if (method == "get") {
@@ -45,7 +50,7 @@ module.exports = function () {
                         }
                     }
                 },
-                tags: [resourcename]
+                tags: [getTag(resourcename)]
             };
             if (!swagger.paths["/" + resourcename])
                 swagger.paths["/" + resourcename] = {};
@@ -148,7 +153,7 @@ module.exports = function () {
                         }
                     }
                 ],
-                tags: [resourcename]
+                tags: [getTag(resourcename)]
             }
         };
         swagger.paths["/" + resourcename + "/logout"] = {
@@ -157,7 +162,7 @@ module.exports = function () {
                 "responses": {
                 },
                 "parameters": [],
-                tags: [resourcename]
+                tags: [getTag(resourcename)]
             }
         };
         swagger.paths["/" + resourcename + "/me"] = {
@@ -166,7 +171,7 @@ module.exports = function () {
                 "responses": {
                 },
                 "parameters": [],
-                tags: [resourcename]
+                tags: [getTag(resourcename)]
             }
         };
     };
@@ -192,7 +197,7 @@ module.exports = function () {
                         if (endpoint.public !== undefined && !endpoint.public)
                             continue
                         endpoint.responses = endpoint.responses || {};
-                        endpoint.tags = [i];
+                        endpoint.tags = [getTag(i)];
                         me.addGet(i, method, swagger, endpoint, resourceConfig);
                         me.addPost(i, method, swagger, endpoint, resourceConfig);
                         me.addDelete(i, method, swagger, endpoint, resourceConfig);
